@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h4>Tracking Analytics at a glance</h4>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<canvas id="pie-chart" width="800" height="450"></canvas>
+<canvas id="bar-chart" width="800" height="450"></canvas>
+<script>
+new Chart(document.getElementById("pie-chart"), {
+        type: 'pie',
+        data: {
+            labels: ["Open", "Completed"],
+            datasets: [{
+                label: "Tickets",
+                backgroundColor: ["#ff4440", "#2eff5f"],
+                data: [@ViewBag.Open,@ViewBag.Closed]
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Tickets being tracked'
+            }
+        }
+    });
+</script>
+<script>
+    new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+            labels: ["GlitchTrace", "MovieMatch", "Workout App"],
+            datasets: [
+                {
+                    label: "Tix",
+                    backgroundColor: ["#3e95cd", "#cbff7d", "#3cba9f"],
+                    data: [6, 4, 3]
+                }
+            ]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Tickets per Project'
+            }
+        }
+    });</script>
